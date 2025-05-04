@@ -11,9 +11,9 @@ import java.sql.DriverManager;
 public class SQLHelper {
 
 
-    private static final String url = System.getProperty("oa.url");
-    private static final String user = System.getProperty("oa.user");
-    private static final String pass  = System.getProperty("oa.password");
+    private static final String url = System.getProperty("db.url");
+    private static final String user = System.getProperty("db.user");
+    private static final String pass  = System.getProperty("db.password");
     private static final QueryRunner runner = new QueryRunner();
 
 
