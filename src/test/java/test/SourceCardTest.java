@@ -160,7 +160,6 @@ public class SourceCardTest {
         var creditCardPage = page.creditPayment();
         var emptyField = DataHelper.getEmptyField();
         creditCardPage.cleanFields();
-        creditCardPage.fillCardPaymentForm(emptyField, emptyField, emptyField, emptyField, emptyField);
         creditCardPage.errorFormat();
     }
 }
