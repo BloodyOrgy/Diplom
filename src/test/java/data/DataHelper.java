@@ -46,7 +46,7 @@ public class DataHelper {
 
     public static String getInvalidMonth() {
 
-        return "00";
+        return "1";
     }
 
     public static String getRandomName() {

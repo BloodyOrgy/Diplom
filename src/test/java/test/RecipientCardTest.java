@@ -48,12 +48,13 @@ public class RecipientCardTest {
         debitCardPage.bankApprovedOperation();
         Assertions.assertEquals("APPROVED", SQLHelper.getCardPayment());
     }
-
+//issues?
     @Test
     public void shouldDeclinedCardPayment() {
         PayTypesPage page = new PayTypesPage();
         page.paymentTypesPage();
         var debitCardPage = page.cardPayment();
+        var cardDeclined = DataHelper.getCardDeclined();
         debitCardPage.cleanFields();
         debitCardPage.fillCardPaymentForm(declinedCardNumber, validMonth, validYear, validOwnerName, validCode);
         debitCardPage.bankDeclinedOperation();
@@ -71,4 +72,94 @@ public class RecipientCardTest {
         debitCardPage.fillCardPaymentForm(emptyField, emptyField, emptyField, emptyField, emptyField);
         debitCardPage.errorFormat();
     }
+
+    @Test
+    public void invalidCardNumber() {
+        PayTypesPage page = new PayTypesPage();
+        page.paymentTypesPage();
+        var debitCardPage = page.cardPayment();
+        var invalidCardNumber = DataHelper.GetAShortNumber();
+        debitCardPage.cleanFields();
+        debitCardPage.fillCardPaymentForm(invalidCardNumber, validMonth, validYear, validOwnerName, validCode);
+        debitCardPage.errorFormat();
+
+    }
+
+    @Test
+    public void invalidCardMonth() {
+        PayTypesPage page = new PayTypesPage();
+        page.paymentTypesPage();
+        var debitCardPage = page.cardPayment();
+        var invalidMonth = DataHelper.getInvalidMonth();
+        debitCardPage.cleanFields();
+        debitCardPage.fillCardPaymentForm(approvedCardNumber, invalidMonth, validYear, validOwnerName, validCode);
+        debitCardPage.errorFormat();
+    }
+
+    //issues?
+    @Test
+    public void InvalidOwnerRussianName() {
+        PayTypesPage page = new PayTypesPage();
+        page.paymentTypesPage();
+        var debitCardPage = page.cardPayment();
+        var rusLanguageName = DataHelper.getRandomNameRus();
+        debitCardPage.cleanFields();
+        debitCardPage.fillCardPaymentForm(approvedCardNumber, validMonth, validYear, rusLanguageName, validCode);
+        debitCardPage.errorFormat();
+    }
+    //issues?
+    @Test
+    public void InvalidOwnerInDigits() {
+        PayTypesPage page = new PayTypesPage();
+        page.paymentTypesPage();
+        var debitCardPage = page.cardPayment();
+        var numberName = DataHelper.getNumberName();
+        debitCardPage.cleanFields();
+        debitCardPage.fillCardPaymentForm(approvedCardNumber, validMonth, validYear, numberName, validCode);
+        debitCardPage.errorFormat();
+    }
+    //issues?
+    @Test
+    public void InvalidOwnerSpecialCharactersName() {
+        PayTypesPage page = new PayTypesPage();
+        page.paymentTypesPage();
+        var debitCardPage = page.cardPayment();
+        var specialCharactersName = DataHelper.getSpecialCharactersName();
+        debitCardPage.cleanFields();
+        debitCardPage.fillCardPaymentForm(approvedCardNumber, validMonth, validYear, specialCharactersName, validCode);
+        debitCardPage.errorFormat();
+    }
+
+    @Test
+    public void InvalidEmptyCVC() {
+        PayTypesPage page = new PayTypesPage();
+        page.paymentTypesPage();
+        var debitCardPage = page.cardPayment();
+        var EmptyCVC = DataHelper.getEmptyField();
+        debitCardPage.cleanFields();
+        debitCardPage.fillCardPaymentForm(approvedCardNumber, validMonth, validYear, validOwnerName, EmptyCVC);
+        debitCardPage.errorFormat();
+    }
+
+    @Test
+    public void InvalidTwoDigitCVC() {
+        PayTypesPage page = new PayTypesPage();
+        page.paymentTypesPage();
+        var debitCardPage = page.cardPayment();
+        var twoDigitCVC = DataHelper.getEmptyField();
+        debitCardPage.cleanFields();
+        debitCardPage.fillCardPaymentForm(approvedCardNumber, validMonth, validYear, validOwnerName, twoDigitCVC);
+        debitCardPage.errorFormat();
+    }
+    @Test
+    public void InvalidOneDigitCVC() {
+        PayTypesPage page = new PayTypesPage();
+        page.paymentTypesPage();
+        var debitCardPage = page.cardPayment();
+        var oneDigitCVC = DataHelper.getEmptyField();
+        debitCardPage.cleanFields();
+        debitCardPage.fillCardPaymentForm(approvedCardNumber, validMonth, validYear, validOwnerName, oneDigitCVC);
+        debitCardPage.errorFormat();
+    }
+
 }
