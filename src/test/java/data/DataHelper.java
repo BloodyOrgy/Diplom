@@ -33,7 +33,11 @@ public class DataHelper {
     public static String GetAShortNumber() {
         int shortNumber = faker.random().nextInt(16);
         return faker.number().digits(shortNumber);
-    }
+            }
+
+            public static String getZeroNumber(){
+                return "0000 0000 0000 0000";
+            }
 
     public static String getRandomMonth(int month) {
         return LocalDate.now().plusMonths(month).format(DateTimeFormatter.ofPattern("MM"));
@@ -76,6 +80,9 @@ public class DataHelper {
 
     public static String getEmptyField() {
         return "";
+    }
+    public static String getOneDigit(){
+        return "1";
     }
 
     @Value
