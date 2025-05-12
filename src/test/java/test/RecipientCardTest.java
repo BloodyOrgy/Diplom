@@ -98,7 +98,7 @@ public class RecipientCardTest {
 
     //issues?
     @Test
-    public void InvalidOwnerRussianName() {
+    public void invalidOwnerRussianName() {
         PayTypesPage page = new PayTypesPage();
         page.paymentTypesPage();
         var debitCardPage = page.cardPayment();
@@ -109,7 +109,7 @@ public class RecipientCardTest {
     }
     //issues?
     @Test
-    public void InvalidOwnerInDigits() {
+    public void invalidOwnerInDigits() {
         PayTypesPage page = new PayTypesPage();
         page.paymentTypesPage();
         var debitCardPage = page.cardPayment();
@@ -120,7 +120,7 @@ public class RecipientCardTest {
     }
     //issues?
     @Test
-    public void InvalidOwnerSpecialCharactersName() {
+    public void invalidOwnerSpecialCharactersName() {
         PayTypesPage page = new PayTypesPage();
         page.paymentTypesPage();
         var debitCardPage = page.cardPayment();
@@ -131,7 +131,7 @@ public class RecipientCardTest {
     }
 
     @Test
-    public void InvalidEmptyCVC() {
+    public void invalidEmptyCVC() {
         PayTypesPage page = new PayTypesPage();
         page.paymentTypesPage();
         var debitCardPage = page.cardPayment();
@@ -142,7 +142,7 @@ public class RecipientCardTest {
     }
 
     @Test
-    public void InvalidTwoDigitCVC() {
+    public void invalidTwoDigitCVC() {
         PayTypesPage page = new PayTypesPage();
         page.paymentTypesPage();
         var debitCardPage = page.cardPayment();
