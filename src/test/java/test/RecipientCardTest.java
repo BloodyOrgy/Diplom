@@ -54,7 +54,6 @@ public class RecipientCardTest {
         PayTypesPage page = new PayTypesPage();
         page.paymentTypesPage();
         var debitCardPage = page.cardPayment();
-        var CardDeclined = DataHelper.getCardDeclined();
         debitCardPage.cleanFields();
         debitCardPage.fillCardPaymentForm(declinedCardNumber, validMonth, validYear, validOwnerName, validCode);
         debitCardPage.bankDeclinedOperation();
